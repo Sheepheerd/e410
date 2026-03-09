@@ -1,0 +1,11 @@
+Command: cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/bin/python -DESP_PLATFORM=1 -DCCACHE_ENABLE=0 /home/sheep/github/e410/car
+CMake Warning at /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/components/esp_common/project_include.cmake:14 (message):
+  Building ESP-IDF with clang is an experimental feature and is not yet
+  officially supported.
+Call Stack (most recent call first):
+  /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/tools/cmake/build.cmake:467 (include)
+  /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/tools/cmake/build.cmake:718 (__build_process_project_includes)
+  /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/tools/cmake/project.cmake:740 (idf_build_process)
+  CMakeLists.txt:6 (project)
+
+

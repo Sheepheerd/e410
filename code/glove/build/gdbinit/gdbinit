@@ -1,0 +1,2 @@
+source /home/sheep/github/e410/glove/build/gdbinit/symbols
+source /home/sheep/github/e410/glove/build/gdbinit/connect

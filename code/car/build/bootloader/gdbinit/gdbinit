@@ -1,0 +1,2 @@
+source /home/sheep/github/e410/car/build/bootloader/gdbinit/symbols
+source /home/sheep/github/e410/car/build/bootloader/gdbinit/connect

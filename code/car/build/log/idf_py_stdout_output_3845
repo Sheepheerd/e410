@@ -1,0 +1,54 @@
+Command: ninja flash
+[1/10] Performing build step for 'bootloader'
+[1/1] cd /home/sheep/github/e410/car/build/bootloader/esp-idf/esptool_py && /nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/bin/python /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/sheep/github/e410/car/build/bootloader/bootloader.bin
+Bootloader binary size 0x6f70 bytes. 0x90 bytes (1%) free.
+[2/10] No install step for 'bootloader'
+[3/10] Completed 'bootloader'
+[4/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/car.c.obj
+[5/10] Linking C static library esp-idf/main/libmain.a
+[6/10] Generating esp-idf/esp_system/ld/sections.ld
+[7/10] Linking CXX executable car.elf
+[8/10] Generating binary image from built executable
+esptool.py v4.9.0
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/sheep/github/e410/car/build/car.bin
+[9/10] cd /home/sheep/github/e410/car/build/esp-idf/esptool_py && /nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/bin/python /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/sheep/github/e410/car/build/partition_table/partition-table.bin /home/sheep/github/e410/car/build/car.bin
+car.bin binary size 0x2f680 bytes. Smallest app partition is 0x100000 bytes. 0xd0980 bytes (81%) free.
+[9/10] cd /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/components/esptool_py && /nix/store/ipjw0mbzcycidbw62gsz47cgivqxm2lv-cmake-4.1.2/bin/cmake -D IDF_PATH=/nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2 -D "SERIAL_TOOL=/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/bin/python;;/nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/sheep/github/e410/car/build -P /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 car.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.9.0
+Serial port /dev/ttyUSB0
+Connecting......
+Traceback (most recent call last):
+  File "/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/lib/python3.13/site-packages/esptool/__init__.py", line 1359, in _main
+    main()
+    ~~~~^^
+  File "/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/lib/python3.13/site-packages/esptool/__init__.py", line 834, in main
+    print(f"Chip is {esp.get_chip_description()}")
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/lib/python3.13/site-packages/esptool/targets/esp32.py", line 226, in get_chip_description
+    pkg_version = self.get_pkg_version()
+  File "/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/lib/python3.13/site-packages/esptool/targets/esp32.py", line 199, in get_pkg_version
+    word3 = self.read_efuse(3)
+  File "/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/lib/python3.13/site-packages/esptool/targets/esp32.py", line 316, in read_efuse
+    return self.read_reg(self.EFUSE_RD_REG_BASE + (4 * n))
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/lib/python3.13/site-packages/esptool/loader.py", line 834, in read_reg
+    val, data = self.command(
+                ~~~~~~~~~~~~^
+        self.ESP_READ_REG, struct.pack("<I", addr), timeout=timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/lib/python3.13/site-packages/esptool/loader.py", line 475, in command
+    p = self.read()
+  File "/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/lib/python3.13/site-packages/esptool/loader.py", line 408, in read
+    return next(self._slip_reader)
+StopIteration
+
+A fatal error occurred: The chip stopped responding.
+FAILED: [code=1] CMakeFiles/flash /home/sheep/github/e410/car/build/CMakeFiles/flash 
+cd /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/components/esptool_py && /nix/store/ipjw0mbzcycidbw62gsz47cgivqxm2lv-cmake-4.1.2/bin/cmake -D IDF_PATH=/nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2 -D "SERIAL_TOOL=/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/bin/python;;/nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/sheep/github/e410/car/build -P /nix/store/hn0dlns5xrq83y43abx0nmbh136w04wm-esp-idf-v5.5.2/components/esptool_py/run_serial_tool.cmake
+ninja: build stopped: subcommand failed.
