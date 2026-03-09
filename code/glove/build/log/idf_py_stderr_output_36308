@@ -1,1 +1,0 @@
-Command: cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/nix/store/f0nc7if6zq6hjramk3q0ixzsdfzf3rj7-python3-3.13.9-env/bin/python -DESP_PLATFORM=1 -DCCACHE_ENABLE=0 /home/sheep/github/e410/glove

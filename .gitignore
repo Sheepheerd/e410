@@ -1,3 +1,5 @@
 .direnv/
-car/build
-glove/build
+**/build/
+**/build/
+
+**/managed_components/
