@@ -478,9 +478,16 @@
     "meta": {
       "version": 4
     },
-    "net_colors": null,
+    "net_colors": {
+      "+BATT": "rgb(255, 0, 225)"
+    },
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "Default",
+        "pattern": "+BATT"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
